@@ -1,159 +1,149 @@
-# **View the file [Setup Guide](SETUP.md) to complete onboarding of the mod repo.**
+<!-- Wargames Development Group – Foliage+ -->
 
-<!-- Update with new links and icons to wargames parts -->
-<!-- [![Curse Forge](https://cdn.jsdelivr.net/npm/@intergrav/devins-badges@3/assets/cozy/available/curseforge_vector.svg)]() -->
-<!--[![Modrinth](https://cdn.jsdelivr.net/npm/@intergrav/devins-badges@3/assets/cozy/available/modrinth_vector.svg)]() -->
+<!-- Badges (enable when/if you publish on these platforms) -->
+<!-- [![CurseForge](https://cdn.jsdelivr.net/npm/@intergrav/devins-badges@3/assets/cozy/available/curseforge_vector.svg)]() -->
+<!-- [![Modrinth](https://cdn.jsdelivr.net/npm/@intergrav/devins-badges@3/assets/cozy/available/modrinth_vector.svg)]() -->
 
-[![Patreon](https://cdn.jsdelivr.net/npm/@intergrav/devins-badges@3/assets/cozy/donate/patreon-plural_vector.svg)](https://www.patreon.com/c/WargamesMc)
-[![Discord](https://cdn.jsdelivr.net/npm/@intergrav/devins-badges@3/assets/cozy/social/discord-plural_vector.svg)](https://discord.gg/t9fd6uGM)
+[![Discord](https://cdn.jsdelivr.net/npm/@intergrav/devins-badges@3/assets/cozy/social/discord-plural_vector.svg)](https://discord.wargames.uk)
 
-# Mod Name
+# hitmarkerplus (Forge 1.7.10)
 
-<!-- Write a quick introduction of the mod this is and show the banner of that mod / representation overview of features -->
+**hitmarkerplus** is a lightweight Forge **1.7.10** mod that gives flans guns a satisfying hitmarker ding sound when they damage a player:
+- Players and all entities damaged by flans weapons will trigger this sound
+
+Repository: https://github.com/Wargames-Development/hitmarkerplus
+
+---
 
 ## Features
 
-<!-- Write about the features of the mod and include some gifs or images to help document major features. Below is an example of image/gif addition -->
-<!-- ![Weapon Showcase](https://raw.githubusercontent.com/Cubed-Development/Modern-Warfare-Cubed/main/assets/showcase/Weapon%20Showcase.gif) -->
-
-<!-- 
-## Documentation
-
-If there is some documentation then please include this and update the link! The website forum documentation page needs to be produced first...
-
-We now have documentation, it is still early, so not everything might be there, you can check it out [here](https://docs.wargames.uk/<mod>)!
--->
+### Hitmarker Sound
+- plays a xp orb sound when entity is damaged by a flans bullet
 
 ---
 
-## Support Us!
+## Installation
 
-<!-- Update this once wargames hosting comes out properly to direct to purchase a server! -->
+### Client
+1. Install Forge **1.7.10 (10.13.4.1614)**
+2. Drop the hitmarkerplus jar into your `mods/` folder
+3. Launch the game
 
-Are you enjoying our mod?
-Consider supporting our development!
-
-Instead of asking for donations the **Wargames Development Group** have produced a project called host.wargames.uk, Please consider keeping an eye out for when we release support through server hosting!
-
-But for now until that is released, all monetary contributions made via Patreon are being put right back into the development of the mod.
-
-[![Patreon](https://cdn.jsdelivr.net/npm/@intergrav/devins-badges@3/assets/cozy/donate/patreon-plural_vector.svg)](https://patreon.com/ModernWarfareCubed)
-
-## Need to get in touch?
-
-<!-- If Discord server or contact lines via email change, update this section here. -->
-
-Our primary way of communicating with the community is through our [Discord Server](https://discord.gg/t9fd6uGM).
-Join our great community today!
-
-Feel free to send an email to dev@wargames.uk if you have any concerns about the development, or if you find dangerous issues or abuse, contact abuse@wargames.uk
-Please note that this inbox will not reply to any queries or help about the mod itself, please use the discord server for that instead.
+### Dedicated Server
+1. Install Forge **1.7.10 (10.13.4.1614)**
+2. Drop the hitmarkerplus jar into your server `mods/` folder
+3. Start the server
 
 ---
 
-## Compiling a current Version
+## Building from Source
 
-If you are annoyed by our slow releases (since we work on the server's schedule), and you can see we have done work,
-feel free to compile it yourself, however it might not work due to incomplete fixes or updates!
+If you wish to compile the mod yourself:
 
-<!-- This is a very basic guide to getting the repo setup, this is on purpose, but could be updated if things change or is wanted -->
+### Requirements
+- Java 8 JDK
+- Git
+- Windows, Linux, or macOS
 
-<details>
-<summary>View Detailed Steps:</summary>
+### Steps
 
-1. Enter the source code directory
-   1. Navigate to the location where you downloaded the sources. *it should be `C:/Users/%USER%/Downloads`*
+1. Clone the repository:
 
-   2. Enter the downloaded source tree.
+       git clone https://github.com/Wargames-Development/hitmarkerplus.git
 
-   3. For Win11 Shift Right-Click, and select `Open in terminal` This will open a CMD instance in this location, *if this for some reason is a powershell instance please follow below:*
-        1. Open a CMD window (search CMD)
+2. Navigate into the project directory.
 
-        2. cd to the directory:
+3. Build the mod:
 
-        ```cmd
-            cd /path/to/project-root/dir/
-        ```
+       gradlew build
 
-<br>
+4. The compiled JAR will be located in:
 
-2. Build the mod
-    1. Type `gradlew build` and then click enter
+       build/libs/
 
-    2. Wait for completion
+> Note: Development builds may be unstable and are not guaranteed to match release behavior.
 
-<br>
-
-3. Locate the mod file.
-   1. Navigate to the location where you downloaded the sources. *it should be `C:/Users/%USER%/Downloads`*
-
-   2. Enter the downloaded source tree.
-
-   3. Navigate to `build/libs`.
-
-   4. Grab the .jar file from there. *This mod might be unstable due to the state of current development*
-
-</details>
+---
 
 ## Contributing
 
-<!-- This is a very basic guide to getting the repo setup, this is on purpose, but could be updated if things change or is wanted -->
+Contributions are welcome from anyone with Forge modding experience.
 
-Anyone and everyone is welcome to contribute and help out with the project!
-However, We hope you have some understanding of modding and therefore are giving basic instructions below
+Please note:
+- This project targets **Minecraft 1.7.10** specifically.
+- Familiarity with ForgeGradle, ASM, and legacy Forge APIs is strongly recommended.
 
-<details>
-<summary>View Detailed Steps:</summary>
+### General Guidelines
+- Keep changes focused and well-documented.
+- Avoid unnecessary refactors.
+- Test changes in both singleplayer and multiplayer environments where applicable.
 
-1. Follow the Step 1 from compiling the latest version above,
+If you would like to contribute in a more official capacity, please contact us through our Discord server.
 
-2. Setup the workspace
-    1. Type `gradlew setupDecompWorkspace` and then click enter
+---
 
-    2. Wait for completion
+## Need to get in touch?
 
-3. Depending on your editor of choice follow one of the below:
+Our primary community hub is our Discord server:
 
-* Intellij Idea:
-    1. Generate idea files by running `gradlew idea` in the cmd.
+https://discord.wargames.uk
 
-    2. Open the .ipr file in the explorer to intellij Idea.
+For non-support enquiries:
+- **dev@wargames.uk** — development / project enquiries
+- **abuse@wargames.uk** — security or abuse reports
 
-* Eclipse Users:
-    1. Generate eclipse files by running  `gradlew eclipse` in the cmd.
+> Please note: email is **not** used for mod support.  
+> Use Discord for questions, feedback, or bug reports.
 
-    2. Select the **eclipse** folder as a workspace when opening eclipse.
+---
 
-</details>
+## Credits
 
-### Want to join the Development Team?
+### Development
+This mod is developed and maintained by the **Wargames Development Group (WDG)**.
 
-We are always looking for people to assist us in our development, as our time is more pushed into the infostructure, hardware and minecraft server.
-Therefore if you wish to help out in a more official way then please get in contact with us through our Discord Server. (only if you've previously worked on any other projects)
+Primary development:
+- **Robbie** — Lead developer  
+  https://github.com/RobbieMilkovic
 
-[![Discord](https://cdn.jsdelivr.net/npm/@intergrav/devins-badges@3/assets/cozy/social/discord-plural_vector.svg)](https://discord.gg/t9fd6uGM)
+### Contributors
 
-## Meet our Team & Credits
+[![Contributors](https://contrib.rocks/image?repo=Wargames-Development/hitmarkerplus)](https://github.com/Wargames-Development/hitmarkerplus/graphs/contributors)
 
-<!-- Add Credit to the developers of any used code, models or textures, including links. -->
+---
 
-Another massive thank you to all the contributors and members of the development team.
-We wouldn't be where we are now without the support from you all!
+### Acknowledgements
+
+While all code in this repository is original, implementation approaches were informed by:
+- Common Forge 1.7.10 modding practices
+- Observed behavior in large legacy mods (e.g. HBM-style sound handling)
+
+No third-party code has been directly copied.
+
+---
 
 ### Wargames Development Group Team
 
-<!-- Update with Vikings correct link to github account -->
-
 - [Glac](https://github.com/RhysHopkins04) - Developer
 - [Barrack](https://github.com/BateNacon) - Developer
-- [Ocean](https://github.com/Oceanseaj) - Designer
-- [Viking](https://github.com/Wargames-Development) - Advisor
+- [Robbie](https://github.com/RobbieMilkovic) - Developer
+- [Jomp](https://github.com/jomples) - Developer
+- [Ocean](https://github.com/Oceanseaj) - Advisor
+- [Viking](https://github.com/snowboardman91) - Advisor
 
-<!--
-### Our Contributors
+---
 
-Update with the links to the correct repo's
+## License & Usage
 
-[![Contributors](https://contrib.rocks/image?repo=Wargames-Development/<reponame>)](https://github.com/Wargames-Development/<reponame>/graphs/contributors)
+This project is provided as-is for use in modpacks and private servers.
 
--->
+Please respect the authorship of this repository when redistributing or modifying the code.
+
+---
+
+## Links
+
+- GitHub Repository: https://github.com/Wargames-Development/hitmarkerplus
+- Discord: https://discord.wargames.uk
+
+---

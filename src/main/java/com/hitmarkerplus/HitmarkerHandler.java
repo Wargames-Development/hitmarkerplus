@@ -1,4 +1,4 @@
-package com.wge;
+package com.hitmarkerplus;
 
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
