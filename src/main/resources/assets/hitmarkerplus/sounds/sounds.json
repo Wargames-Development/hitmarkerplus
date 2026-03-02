@@ -1,0 +1,11 @@
+{
+  "hitmarker": {
+    "category": "player",
+    "sounds": [
+      {
+        "name": "hitmarkerplus:hitmarker",
+        "stream": false
+      }
+    ]
+  }
+}
