@@ -1,30 +1,33 @@
 package com.hitmarkerplus;
 
-import cpw.mods.fml.common.eventhandler.SubscribeEvent;
-import net.minecraftforge.event.entity.living.LivingHurtEvent;
-import net.minecraft.entity.player.EntityPlayerMP;
-
 import com.flansmod.common.guns.EntityBullet;
+import com.hitmarkerplus.network.PacketHitmarker;
+import cpw.mods.fml.common.eventhandler.SubscribeEvent;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.player.EntityPlayerMP;
+import net.minecraftforge.event.entity.living.LivingHurtEvent;
 
 public class HitmarkerHandler {
 
     @SubscribeEvent
     public void onLivingHurt(LivingHurtEvent event) {
-
-        // SERVER ONLY: dedicated server is where the hit is authoritative
+        // Server only
+        if (event.entity == null || event.entity.worldObj == null) return;
         if (event.entity.worldObj.isRemote) return;
 
         if (event.source == null) return;
-        if (!(event.source.getSourceOfDamage() instanceof EntityBullet)) return;
 
-        EntityBullet bullet = (EntityBullet) event.source.getSourceOfDamage();
+        Entity src = event.source.getSourceOfDamage();
+        if (!(src instanceof EntityBullet)) return;
 
-        // Flan bullets set owner; check player shooter
-        if (bullet.owner instanceof EntityPlayerMP) {
-            EntityPlayerMP shooter = (EntityPlayerMP) bullet.owner;
+        EntityBullet bullet = (EntityBullet) src;
 
-            // Tell ONLY the shooter’s client to play the sound
-            HitmarkerPlus.NET.sendTo(new PacketHitmarker(), shooter);
-        }
+        // Flan's bullets typically store shooter as 'owner'
+        if (!(bullet.owner instanceof EntityPlayerMP)) return;
+
+        EntityPlayerMP shooter = (EntityPlayerMP) bullet.owner;
+
+        // Send packet to shooter only
+        HitmarkerPlus.NET.sendTo(new PacketHitmarker(), shooter);
     }
 }
